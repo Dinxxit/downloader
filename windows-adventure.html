@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Windows Action Games</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: url('img/images.png') no-repeat center center fixed;
+            background-size: cover;
+            color: white;
+        }
+
+        header {
+            background-color: rgba(255, 255, 255, 0.99);
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header img {
+            height: 50px;
+        }
+
+        nav {
+            display: flex;
+            gap: 15px;
+        }
+
+        nav a {
+            color: rgb(0, 0, 0);
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .container {
+            text-align: center;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            border-radius: 9px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            margin: 20px;
+        }
+
+        .game-list {
+            margin: 20px;
+        }
+
+        .game {
+            margin-bottom: 20px;
+        }
+
+        button {
+            background-color: #ff6f61;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        button:hover {
+            background-color: #e65c50;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+        }
+
+        /* Responsive Styling */
+        @media (max-width: 768px) {
+            nav {
+                display: none;
+                flex-direction: column;
+                background-color: rgba(255, 255, 255, 0.9);
+                position: absolute;
+                top: 60px;
+                left: 0;
+                width: 100%;
+                text-align: center;
+            }
+
+            .menu-toggle {
+                display: block;
+                cursor: pointer;
+            }
+
+            .menu-toggle span {
+                background-color: #000;
+                height: 3px;
+                width: 25px;
+                display: block;
+                margin: 5px 0;
+            }
+
+            nav.active {
+                display: flex;
+            }
+
+            .container {
+                margin: 10px;
+                padding: 15px;
+            }
+
+            .game {
+                margin-bottom: 15px;
+            }
+
+            button {
+                width: 100%;
+                padding: 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header {
+                flex-direction: column;
+            }
+
+            header img {
+                margin-bottom: 10px;
+            }
+
+            nav {
+                gap: 10px;
+            }
+
+            .container {
+                margin: 5px;
+                padding: 10px;
+            }
+
+            .game {
+                margin-bottom: 10px;
+            }
+
+            button {
+                width: 100%;
+                padding: 8px;
+            }
+        }
+    </style>
+    <script>
+        function toggleMenu() {
+            document.querySelector('nav').classList.toggle('active');
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <img src="img/dinx.jpg" alt="Logo">
+        <div class="menu-toggle" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="windows.html">Windows Games</a>
+            <a href="android.html">Android Games</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <h1>Windows Action Games</h1>
+        <div class="game-list">
+            <div class="game">
+                <h2>Game 1: Action Game Title</h2>
+                <p>Experience an adrenaline-pumping action-packed game with fast-paced combat and epic boss battles.</p>
+                <button onclick="window.location.href='game1-download.html'">Download</button>
+            </div>
+            <div class="game">
+                <h2>Game 2: Another Action Game</h2>
+                <p>Explore a dynamic world filled with high-octane action, thrilling missions, and immersive gameplay.</p>
+                <button onclick="window.location.href='game2-download.html'">Download</button>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        &copy; 2024 App Downloader. All rights reserved.
+    </footer>
+</body>
+</html>

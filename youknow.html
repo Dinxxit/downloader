@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Solar System Simulation</title>
+<style>
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #000;
+        overflow: hidden;
+        margin: 0;
+        font-family: Arial, sans-serif;
+    }
+    
+    .sun {
+        width: 100px;
+        height: 100px;
+        background-color: yellow;
+        border-radius: 50%;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+    
+    .planet {
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        cursor: pointer;
+    }
+    
+    .mercury { background-color: #bfbfbf; }
+    .venus { background-color: #f0ad4e; }
+    .earth { background-color: #5bc0de; }
+    .mars { background-color: #d9534f; }
+    .jupiter { background-color: #9d6646; }
+    .saturn { background-color: #e7e7e7; }
+    .uranus { background-color: #6e99b4; }
+    .neptune { background-color: #4a69ad; }
+    
+    .note {
+        position: absolute;
+        top: 10%;
+        left: 50%;
+        transform: translateX(-50%);
+        background: white;
+        color: black;
+        padding: 20px;
+        border-radius: 8px;
+        display: none;
+        max-width: 300px;
+        text-align: center;
+    }
+    
+    .note img {
+        max-width: 100%;
+        border-radius: 8px;
+    }
+</style>
+</head>
+<body>
+<div class="sun"></div>
+<div class="planet mercury" data-planet="mercury"></div>
+<div class="planet venus" data-planet="venus"></div>
+<div class="planet earth" data-planet="earth"></div>
+<div class="planet mars" data-planet="mars"></div>
+<div class="planet jupiter" data-planet="jupiter"></div>
+<div class="planet saturn" data-planet="saturn"></div>
+<div class="planet uranus" data-planet="uranus"></div>
+<div class="planet neptune" data-planet="neptune"></div>
+
+<div id="note" class="note"></div>
+
+<script>
+const planets = document.querySelectorAll('.planet');
+const note = document.getElementById('note');
+
+// Information for each planet
+const planetInfo = {
+  mercury: {
+    image: 'https://images.app.goo.gl/mvKue2JJVPHPoVB17',
+    text: 'Mercury is the closest planet to the Sun and has no atmosphere.'
+  },
+  venus: {
+    image: 'https://via.placeholder.com/150?text=Venus',
+    text: 'Venus is the hottest planet in our solar system with a thick, toxic atmosphere.'
+  },
+  earth: {
+    image: 'https://via.placeholder.com/150?text=Earth',
+    text: 'Earth is the only planet known to support life, with a diverse environment and atmosphere.'
+  },
+  mars: {
+    image: 'https://via.placeholder.com/150?text=Mars',
+    text: 'Mars is known as the Red Planet due to its iron oxide surface.'
+  },
+  jupiter: {
+    image: 'https://via.placeholder.com/150?text=Jupiter',
+    text: 'Jupiter is the largest planet in our solar system with a Great Red Spot, a massive storm.'
+  },
+  saturn: {
+    image: 'https://via.placeholder.com/150?text=Saturn',
+    text: 'Saturn is famous for its stunning ring system and is the second largest planet.'
+  },
+  uranus: {
+    image: 'https://via.placeholder.com/150?text=Uranus',
+    text: 'Uranus is an ice giant with a unique tilt that makes it roll on its side.'
+  },
+  neptune: {
+    image: 'https://via.placeholder.com/150?text=Neptune',
+    text: 'Neptune is the farthest planet from the Sun, known for its strong winds and blue color.'
+  }
+};
+
+// Display information when a planet is clicked
+planets.forEach((planet) => {
+  planet.addEventListener('click', () => {
+    const planetName = planet.dataset.planet;
+    const info = planetInfo[planetName];
+    note.innerHTML = `<img src="${info.image}" alt="${planetName}"><p>${info.text}</p>`;
+    note.style.display = 'block';
+  });
+});
+
+// Hide note when clicking outside of it
+document.addEventListener('click', (event) => {
+  if (!event.target.classList.contains('planet') && note.style.display === 'block') {
+    note.style.display = 'none';
+  }
+});
+
+// Planets' orbital radii and speeds (relative to each other)
+const planetData = {
+  mercury: { radius: 40, speed: 0.3 },
+  venus: { radius: 60, speed: 0.2 },
+  earth: { radius: 80, speed: 0.1 },
+  mars: { radius: 100, speed: 0.08 },
+  jupiter: { radius: 140, speed: 0.05 },
+  saturn: { radius: 180, speed: 0.03 },
+  uranus: { radius: 220, speed: 0.02 },
+  neptune: { radius: 260, speed: 0.01 }
+};
+
+// Orbit function to position planets
+function orbit() {
+  planets.forEach((planet) => {
+    const planetName = planet.dataset.planet;
+    const { radius, speed } = planetData[planetName];
+    
+    let angle = Date.now() * speed * 0.0001; // Use time for smooth animation
+    let x = radius * Math.cos(angle);
+    let y = radius * Math.sin(angle);
+    
+    planet.style.transform = `translate(-50%, -50%) translate(${x}px, ${y}px)`;
+  });
+  requestAnimationFrame(orbit);
+}
+
+// Start orbiting
+orbit();
+</script>
+</body>
+</html>

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Windows Action Games</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: url('img/images.png') no-repeat center center fixed;
+            background-size: cover;
+            color: white;
+        }
+        header {
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+        header img {
+            height: 50px;
+            max-width: 100%;
+        }
+        nav {
+            display: flex;
+            gap: 15px;
+        }
+        nav a {
+            color: rgb(0, 0, 0);
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .container {
+            text-align: center;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            border-radius: 9px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            margin: 20px;
+        }
+        .game-list {
+            margin: 20px;
+        }
+        .game {
+            margin-bottom: 20px;
+        }
+        button {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 10px;
+            }
+            nav {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+                margin-top: 10px;
+            }
+            .container {
+                padding: 15px;
+                margin: 15px;
+            }
+            .game-list {
+                margin: 10px;
+            }
+            .game h2 {
+                font-size: 1.5em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header {
+                padding: 10px;
+                text-align: center;
+            }
+            header img {
+                height: 40px;
+            }
+            nav {
+                flex-direction: column;
+                gap: 5px;
+                margin-top: 10px;
+            }
+            nav a {
+                font-size: 14px;
+            }
+            .container {
+                padding: 10px;
+                margin: 10px;
+            }
+            .game h2 {
+                font-size: 1.2em;
+            }
+            button {
+                padding: 8px 16px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="img/dinx.jpg" alt="Logo">
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="windows.html">Windows Games</a>
+            <a href="android.html">Android Games</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <h1>Windows Action Games</h1>
+        <div class="game-list">
+            <div class="game">
+                <h2>Game 1: Action Game Title</h2>
+                <p>Experience an adrenaline-pumping action-packed game with fast-paced combat and epic boss battles.</p>
+                <button onclick="window.location.href='game1-download.html'">Download</button>
+            </div>
+            <div class="game">
+                <h2>Game 2: Another Action Game</h2>
+                <p>Explore a dynamic world filled with high-octane action, thrilling missions, and immersive gameplay.</p>
+                <button onclick="window.location.href='game2-download.html'">Download</button>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        &copy; 2024 App Downloader. All rights reserved.
+    </footer>
+</body>
+</html>

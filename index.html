@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>App Downloader</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: url('img/images.png') no-repeat center center fixed;
+            background-size: cover;
+            color: white;
+        }
+        header {
+            background-color: rgba(255, 255, 255, 0.99);
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        header img {
+            height: 50px;
+        }
+        nav {
+            display: flex;
+            gap: 15px;
+        }
+        nav a {
+            color: rgb(0, 0, 0);
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+        .menu-toggle span {
+            height: 3px;
+            width: 25px;
+            background: rgb(0, 0, 0);
+            margin: 4px 0;
+        }
+
+        .container {
+            text-align: center;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            border-radius: 9px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            margin: 20px;
+        }
+        .button {
+            display: inline-block;
+            margin: 10px;
+            padding: 0;
+            border: none;
+            cursor: pointer;
+            background-color: transparent;
+        }
+        .button img {
+            width: 150px;
+            height: auto;
+        }
+        .genres {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap; /* Allows the genres to wrap for smaller screens */
+            margin: 20px 0;
+        }
+        .genres div {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+            cursor: pointer;
+            transition: background 0.3s;
+            text-align: center;
+            flex: 1;
+            margin: 10px;
+            min-width: 150px; /* Ensures the genres remain readable on smaller screens */
+        }
+        .genres div:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+        .latest-games {
+            margin: 20px;
+        }
+        .latest-games h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .game {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+        .slideshow-container {
+            position: relative;
+            width: 100%; /* Set to 100% to adjust with screen */
+            max-width: 400px; /* Add max width for large screens */
+            height: auto;
+        }
+        .slide {
+            display: none;
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+        .game button {
+            background-color: #ff6f61;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background 0.3s;
+        }
+        .game button:hover {
+            background-color: #e65c50;
+        }
+        footer {
+            background-color: rgba(0, 0, 0, 0.7);
+            text-align: center;
+            padding: 10px 20px;
+            width: 100%;
+            position: relative; /* Fixed footer removed to prevent issues on small screens */
+            bottom: 0;
+        }
+
+        /* Media Queries for responsiveness */
+        @media (max-width: 768px) {
+            nav {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                background-color: rgba(255, 255, 255, 0.9);
+                position: absolute;
+                top: 60px;
+                left: 0;
+            }
+            nav.active {
+                display: flex;
+            }
+            .menu-toggle {
+                display: flex;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .button img {
+                width: 100px; /* Smaller download button images for small screens */
+            }
+            .genres div {
+                font-size: 14px; /* Adjust text size for small screens */
+            }
+            .game button {
+                padding: 5px 10px; /* Smaller button for small screens */
+            }
+        }
+    </style>
+    <script>
+        function toggleMenu() {
+            document.querySelector('nav').classList.toggle('active');
+        }
+
+        function startSlideshow() {
+            const slideshows = document.querySelectorAll('.slideshow-container');
+            slideshows.forEach(slideshow => {
+                let index = 0;
+                const slides = slideshow.querySelectorAll('.slide');
+                slides[index].style.display = 'block';
+                setInterval(() => {
+                    slides[index].style.display = 'none';
+                    index = (index + 1) % slides.length;
+                    slides[index].style.display = 'block';
+                }, 2000);
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', startSlideshow);
+    </script>
+</head>
+<body>
+    <header>
+        <img src="img/dinx.jpg" alt="Logo">
+        <div class="menu-toggle" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="windows.html">Windows Games</a>
+            <a href="android.html">Android Games</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <h1>App Downloader</h1>
+       <a class="button" href="app.html" download><img src="img/—Pngtree—blue geometric window sash_4886912.png" alt="Download Windows EXE"></a>
+        <a class="button" href="path/to/android_apk.apk" download><img src="img/—Pngtree—android icon_4537416.png" alt="Download Android APK"></a>
+        <a class="button" href="path/to/app.other" download><img src="img/pngegg.png" alt="Download Other App"></a>
+    </div>
+
+    <div class="genres" id="game">
+        <div onclick="window.location.href='windows-action.html'">
+            <h2>Action</h2>
+        </div>
+        <div onclick="window.location.href='windows-adventure.html'">
+            <h2>Adventure</h2>
+        </div>
+        <div onclick="window.location.href='windows-strategy.html'">
+            <h2>Strategy</h2>
+        </div>
+        <div onclick="window.location.href='windows-puzzle.html'">
+            <h3>Puzzle</h3>
+        </div>
+        <div onclick="window.location.href='windows-sports.html'">
+            <h2>Sports</h2>
+        </div>
+   
+        <div onclick="window.location.href='android-arcade.html'">
+            <h2>Arcade</h2>
+        </div>
+        <div onclick="window.location.href='android-simulation.html'">
+            <h2>Simulation</h2>
+        </div>
+        <div onclick="window.location.href='android-racing.html'">
+            <h2>Racing</h2>
+        </div>
+        <div onclick="window.location.href='android-role-playing.html'">
+            <h2>Role-playing</h2>
+        </div>
+        <div onclick="window.location.href='android-casual.html'">
+            <h2>Casual</h2>
+        </div>
+    </div>
+
+    <div class="latest-games">
+        <h2>Latest Games</h2>
+        <div class="game">
+            <h3>Call Of Duty Mobile</h3>
+            <div class="slideshow-container">
+                <img class="slide" src="img/com.activision.callofduty.shooter-105001ef-ac25-4862-b16e-75c1de90d7af_512x512.webp" alt="CODM">
+                <img class="slide" src="img/149835-games-feature-call-of-duty-mobile-screens-image7-wnpgxaiff1.avif" alt="COD Mobile">
+                <img class="slide" src="img/COD-LAUNCH-TOUT.jpg" alt="COD Launch">
+                <img class="slide" src="img/WZ-Season-Three-Announce-TOUT.jpg" alt="COD Season Three">
+            </div>
+            <p>Explore the thrilling adventures in CODM first hand. Experience cutting-edge graphics and gameplay. Join our online community and make new friends.</p>
+            <button onclick="window.location.href='codm.html'">Find out more</button>
+        </div>
+        <div class="game">
+            <h3>Saints Row I-IV and Platinum</h3>
+            <div class="slideshow-container">  
+                 <img class="slide" src="img/EGS_SaintsRow_DeepSilverVolition_S1_2560x1440-1ba560d3f228fe5c7341777a6ac9abb7.jpeg" alt="Saints Row">
+                <img class="slide" src="img/saints-row-the-third-20111129020221306.jpg" alt="Saints Row Third">
+                <img class="slide" src="img/Saints-Row_2022_06-09-22_013.jpg" alt="Saints Row 2022">
+                <img class="slide" src="img/saints-row-4-button-crop-1641598147165.jpg" alt="Saints Row 4">
+            </div>
+            <p>Dive into the strategic battles of futuristic gaming. Outsmart your opponents and conquer the world. Use new crazy powers to shape your destiny.</p>
+            <button onclick="window.location.href='saint_row.html'">Get now</button>
+        </div>
+        <div class="game">
+            <h3>PES</h3>
+            <div class="slideshow-container">
+                <img class="slide" src="img/rBEeJGInkpuAfJQ3AAGb8dioVBI818.jpg" alt="PES">
+                <img class="slide" src="img/3580191-69731071_10156604971315488_5838732271946825728_o.jpg" alt="PES Gameplay">
+                <img class="slide" src="img/images (g).jpeg" alt="PES Graphics">
+            </div>
+            <p>Experience your favorite football players in realistic game scenarios. Discover new skills and strategies.</p>
+            <button onclick="window.location.href='pes.html'">Look up Download</button>
+        </div>
+    </div>
+
+    <footer>
+        &copy; 2024 App Downloader. All rights reserved.
+    </footer>
+</body>
+</html>
